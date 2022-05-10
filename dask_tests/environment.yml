@@ -1,0 +1,10 @@
+name: dask
+channels:
+  - conda-forge
+dependencies:
+  - iris
+  - xarray
+  - time
+  - distributed
+  - dask-jobqueue
+  - bokeh
