@@ -2,6 +2,7 @@ import sys
 from pathlib import Path
 
 import dask.distributed
+import dask_jobqueue
 import dask
 import iris
 import xarray
@@ -16,9 +17,9 @@ def compute_example(in_file, out_file):
 
 def main(in_files):
     # start a dask cluster, e.g.
-    cluster = dask.distributed.LocalCluster()
+    #cluster = dask.distributed.LocalCluster(processes=False)
     # or when on Jasmin/Levante/etc:
-    # cluster = dask_jobqueue.SlurmCluster()
+    cluster = dask_jobqueue.SLURMCluster(cores=8, memory='24GB')
     # or a even cluster in the cloud hopefully at some point
     client = dask.distributed.Client(cluster)
 
